@@ -14,6 +14,7 @@ const (
 	P_IP6               = 0x0029
 	P_IP6ZONE           = 0x002A
 	P_QUIC              = 0x01CC
+	P_WEBTRANSPORT      = 0x01D1
 	P_SCTP              = 0x0084
 	P_CIRCUIT           = 0x0122
 	P_UDT               = 0x012D
@@ -170,6 +171,11 @@ var (
 		Code:  P_QUIC,
 		VCode: CodeToVarint(P_QUIC),
 	}
+	protoWEBTRANSPORT = Protocol{
+		Name:  "webtransport",
+		Code:  P_WEBTRANSPORT,
+		VCode: CodeToVarint(P_WEBTRANSPORT),
+	}
 	protoHTTP = Protocol{
 		Name:  "http",
 		Code:  P_HTTP,
@@ -248,6 +254,7 @@ func init() {
 		protoUTP,
 		protoUDT,
 		protoQUIC,
+		protoWEBTRANSPORT,
 		protoHTTP,
 		protoHTTPS,
 		protoP2P,
