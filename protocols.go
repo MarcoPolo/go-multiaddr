@@ -15,6 +15,7 @@ const (
 	P_IP6ZONE           = 0x002A
 	P_QUIC              = 0x01CC
 	P_WEBTRANSPORT      = 0x01D1
+	P_CERTHASH          = 0x01D2
 	P_SCTP              = 0x0084
 	P_CIRCUIT           = 0x0122
 	P_UDT               = 0x012D
@@ -176,6 +177,13 @@ var (
 		Code:  P_WEBTRANSPORT,
 		VCode: CodeToVarint(P_WEBTRANSPORT),
 	}
+	protoCERTHASH = Protocol{
+		Name:       "certhash",
+		Code:       P_CERTHASH,
+		VCode:      CodeToVarint(P_CERTHASH),
+		Size:       LengthPrefixedVarSize,
+		Transcoder: TranscoderCertHash,
+	}
 	protoHTTP = Protocol{
 		Name:  "http",
 		Code:  P_HTTP,
@@ -255,6 +263,7 @@ func init() {
 		protoUDT,
 		protoQUIC,
 		protoWEBTRANSPORT,
+		protoCERTHASH,
 		protoHTTP,
 		protoHTTPS,
 		protoP2P,
